@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const Heading = ({ text }) => <h1>{text}</h1>;
+
 const Button = ({ text, onClick }) => <button onClick={onClick}>{text}</button>;
 
 const StatisticLine = ({ text, value }) => (
@@ -34,13 +36,13 @@ const App = () => {
 
   return (
     <>
-      <h1>give feedback</h1>
+      <Heading text="give feedback" />
 
       <Button text="good" onClick={() => setGood(good + 1)} />
       <Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
       <Button text="bad" onClick={() => setBad(bad + 1)} />
 
-      <h1>statistics</h1>
+      <Heading text="statistics" />
 
       <Statistics states={[good, neutral, bad]} />
     </>
