@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.success {
+  border: 5px solid green;
+  background: lightgray;
+  color: green;
+  font-size: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.error {
+  border: 5px solid red;
+  background: lightgray;
+  color: red;
+  font-size: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
