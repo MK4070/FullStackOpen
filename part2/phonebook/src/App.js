@@ -32,7 +32,7 @@ const App = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
-      <Heading text="add a new" />
+      <Heading text="Add a new" />
       <Form args={{ persons, setPersons, setMessage }} />
       <Heading text="Numbers" />
       <Persons
