@@ -24,6 +24,7 @@ blogRouter.post("/", middleware.userExtractor, async (req, res) => {
   });
 
   const savedBlog = await blog.save();
+  savedBlog.execPopulate("user", { username: 1, name: 1 });
   user.blogs = user.blogs.concat(savedBlog._id);
   await user.save();
   res.status(201).json(savedBlog);
@@ -38,13 +39,13 @@ blogRouter.delete("/:id", middleware.userExtractor, async (req, res) => {
   } else res.status(401).json({ error: "invalid credentials" });
 });
 
-blogRouter.patch("/:id", middleware.userExtractor, async (req, res) => {
+blogRouter.put("/:id", middleware.userExtractor, async (req, res) => {
   const blog = await Blog.findById(req.params.id);
   if (blog.user.toString() === req.user._id.toString()) {
     const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       useFindAndModify: true,
-    });
+    }).populate("user", { username: 1, name: 1 });
     if (!updatedBlog) throw new Error("Invalid ID");
     res.status(200).json(updatedBlog.toJSON());
   } else res.status(401).json({ error: "invalid credentials" });
