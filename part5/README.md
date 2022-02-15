@@ -7,7 +7,7 @@ To start the application:
 ```bash
 # First, you need to start the backend
 
-# Install dependancies
+# Install dependencies
 $ npm install
 
 # Start the frontend application
