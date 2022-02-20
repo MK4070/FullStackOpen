@@ -56,7 +56,7 @@ const Blog = ({ blog, likeBlog, user, deleteBlog }) => {
   return (
     <div className="blog" style={blogStyle}>
       {blog.title} {blog.author}
-      <button id="viewDetails" onClick={handleVisibility}>
+      <button id="viewBtn" onClick={handleVisibility}>
         {label}
       </button>
       {visibility && details()}

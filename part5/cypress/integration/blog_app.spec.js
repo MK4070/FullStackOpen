@@ -80,13 +80,13 @@ describe("Blog app", () => {
     });
 
     it("A blog can be liked", function () {
-      cy.get("#viewDetails").click();
+      cy.get("#viewBtn").click();
       cy.get("#likeBtn").click();
       cy.get("#blogLikes").should("contain", "likes 6");
     });
 
     it("The user who created a blog can delete it", function () {
-      cy.get("#viewDetails").click();
+      cy.get("#viewBtn").click();
       cy.contains("remove");
       cy.get("#removeBlogBtn").click();
       cy.get("html").should("not.contain", "testblog superman");
@@ -95,7 +95,7 @@ describe("Blog app", () => {
     it("other users cannot delete the blog", function () {
       cy.get("#logoutBtn").click();
       cy.login({ username: "anotheruser", password: "useranother" });
-      cy.get("#viewDetails").click();
+      cy.get("#viewBtn").click();
       cy.get("#removeBlogBtn").should("not.exist");
     });
 
@@ -115,7 +115,7 @@ describe("Blog app", () => {
         });
       });
       it("blogs are ordered according to likes", function () {
-        cy.get(".blog #viewDetails").click({ multiple: true });
+        cy.get(".blog #viewBtn").click({ multiple: true });
         cy.get("#blogLikes #likeText").then((blogs) => {
           const likes = [5, 3, 1];
           blogs.map((i, el) => cy.wrap(el).contains(`likes ${likes[i]}`));

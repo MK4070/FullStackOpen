@@ -39,7 +39,7 @@ describe("<Blog />", () => {
   });
 
   test("after clicking the button, all blog content is displayed", () => {
-    const btn = container.querySelector(".viewBtn");
+    const btn = container.querySelector("#viewBtn");
     userEvent.click(btn);
 
     const url = container.querySelector("#blogUrl");
@@ -49,7 +49,7 @@ describe("<Blog />", () => {
   });
 
   test("clicking like button twice calls the event handler twice", () => {
-    const btn = container.querySelector(".viewBtn");
+    const btn = container.querySelector("#viewBtn");
     userEvent.click(btn);
 
     const likeBtn = container.querySelector("#likeBtn");
