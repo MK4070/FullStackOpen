@@ -30,6 +30,23 @@ blogRouter.post("/", middleware.userExtractor, async (req, res) => {
   res.status(201).json(savedBlog);
 });
 
+blogRouter.put("/:id/comments", async (req, res) => {
+  const body = req.body;
+  if (!body.comment)
+    return res.status(400).json({ error: "comment body missing" });
+
+  const blog = await Blog.findById(req.params.id);
+
+  const reqObj = { comments: blog.comments.concat(body.comment) };
+
+  const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, reqObj, {
+    new: true,
+    useFindAndModify: true,
+  }).populate("user", { username: 1, name: 1 });
+  if (!updatedBlog) res.status(400).json({ error: "invalid id" });
+  res.status(200).json(updatedBlog.toJSON());
+});
+
 blogRouter.delete("/:id", middleware.userExtractor, async (req, res) => {
   const blog = await Blog.findById(req.params.id);
 
