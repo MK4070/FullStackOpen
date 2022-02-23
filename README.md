@@ -10,4 +10,4 @@ Other topics include debugging applications, configuration, managing runtime env
 
 ### [Certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/4cd3a2c9866cff52261de609ce4f0f74)
 
-![Course Completion Certificate](/certificate-fullstack.png)
+![Course Completion Certificate](https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/4cd3a2c9866cff52261de609ce4f0f74)
